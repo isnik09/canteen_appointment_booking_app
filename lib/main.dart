@@ -1,4 +1,5 @@
 import 'package:canteen_appointment_booking_app/screens/home_page.dart';
+import 'package:canteen_appointment_booking_app/theme-data.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import './screens/login_page.dart';
@@ -21,6 +22,26 @@ class CanteenApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        useMaterial3: true,
+        textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(
+            textStyle: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+            primary: Colors.black,
+          ),
+        ),
+        scaffoldBackgroundColor: BG,
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            primary: ACCENTCOLOUR,
+            onPrimary: Colors.black,
+            textStyle: const TextStyle(
+                color: Colors.black, fontWeight: FontWeight.bold, fontSize: 15),
+          ),
+        ),
+      ),
       home: HomeScreen(),
       initialRoute: LoginPage.id,
       routes: {
