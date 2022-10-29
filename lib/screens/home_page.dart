@@ -1,8 +1,11 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
-import 'package:canteen_appointment_booking_app/asset-data.dart';
+import 'package:canteen_appointment_booking_app/components/background.dart';
+import 'package:canteen_appointment_booking_app/screens/booking_screen.dart';
+import 'package:canteen_appointment_booking_app/screens/history.dart';
+import 'package:canteen_appointment_booking_app/screens/profile_page.dart';
+import 'package:canteen_appointment_booking_app/screens/show_receipt.dart';
 import 'package:canteen_appointment_booking_app/theme-data.dart';
 import 'package:flutter/material.dart';
-import '../components/background.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String id = 'home_screen';
@@ -22,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
     double TEN = SCREENHEIGHT * 0.011232358;
 
     return Scaffold(
-      body: SafeArea(
+      body: Center(
         child: Center(
           child: Stack(
             children: <Widget>[
@@ -32,16 +35,51 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Column(
                     children: <Widget>[
                       Padding(
-                        padding: EdgeInsets.only(top: (TEN * 5)),
-                        child: Image.asset(cart_image),
+                        padding: EdgeInsets.only(
+                            top: TEN * 8.6, left: TEN * 2, right: TEN * 2),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              child: Text(
+                                "Hello\nUserName",
+                                style: TextStyle(
+                                    fontSize: TEN * 4,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ),
+                            ElevatedButton(
+                              child: Text(
+                                'ProfilePic',
+                                style: TextStyle(fontSize: TEN * 1.8),
+                              ),
+                              onPressed: () {
+                                Navigator.pushNamed(context, ProfilePage.id);
+                              },
+                              style: ElevatedButton.styleFrom(
+                                fixedSize: Size(TEN * 12, TEN * 12),
+                                shape: CircleBorder(),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(bottom: TEN * 2),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/book-a-slot');
-                          },
-                          child: const Text('Book appointment'),
+                      Center(
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(vertical: TEN * 2),
+                          child: SizedBox(
+                            width: TEN * 22,
+                            height: TEN * 5,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.pushNamed(context, BookingPage.id);
+                              },
+                              child: Text(
+                                "Book appointment",
+                                style: TextStyle(fontSize: TEN * 1.8),
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                       BlurryContainer(
@@ -79,12 +117,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                     TextButton(
                                       onPressed: () {
                                         Navigator.pushNamed(
-                                            context, '/show-receipt');
+                                            context, ReceiptPage.id);
                                       },
                                       child: Text(
                                         'VIEW RECEIPT',
                                         style: TextStyle(
                                           fontSize: (TEN + 4),
+                                          color: ACCENTCOLOUR,
+                                          fontWeight: FontWeight.bold,
                                         ),
                                       ),
                                     ),
@@ -133,7 +173,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ),
                                     Text(
                                       'EXPIRED',
-                                      style: TextStyle(fontSize: (TEN + 4)),
+                                      style: TextStyle(
+                                        fontSize: (TEN + 4),
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -147,12 +190,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                     TextButton(
                                       onPressed: () {
                                         Navigator.pushNamed(
-                                            context, '/show-receipt');
+                                            context, HistoryPage.id);
                                       },
                                       child: Text(
                                         'VIEW ALL',
                                         style: TextStyle(
                                           fontSize: (TEN + 4),
+                                          fontWeight: FontWeight.bold,
+                                          color: ACCENTCOLOUR,
                                         ),
                                       ),
                                     ),

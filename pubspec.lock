@@ -43,6 +43,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.16.0"
+  cool_dropdown:
+    dependency: "direct main"
+    description:
+      name: cool_dropdown
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.4.2"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -100,6 +107,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  group_button:
+    dependency: "direct main"
+    description:
+      name: group_button
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "5.2.2"
   js:
     dependency: transitive
     description:

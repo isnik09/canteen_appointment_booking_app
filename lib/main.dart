@@ -9,11 +9,14 @@ import './screens/history.dart';
 import './screens/profile_page.dart';
 import './screens/booking_screen.dart';
 import './screens/show_receipt.dart';
+import './screens/error_page.dart';
 
 void main() {
   // WidgetsFlutterBinding.ensureInitialized();
   // await Firebase.initializeApp();
-  runApp(CanteenApp());
+  runApp(
+    CanteenApp(),
+  );
 }
 
 class CanteenApp extends StatelessWidget {
@@ -24,25 +27,21 @@ class CanteenApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
         useMaterial3: true,
-        textButtonTheme: TextButtonThemeData(
-          style: TextButton.styleFrom(
-            textStyle: TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
-            primary: Colors.black,
-          ),
-        ),
         scaffoldBackgroundColor: BG,
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            primary: ACCENTCOLOUR,
-            onPrimary: Colors.black,
+            foregroundColor: Colors.black,
+            backgroundColor: ACCENTCOLOUR,
+            elevation: 0,
             textStyle: const TextStyle(
-                color: Colors.black, fontWeight: FontWeight.bold, fontSize: 15),
+              color: Color.fromARGB(180, 0, 0, 0),
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ),
       home: HomeScreen(),
+      debugShowCheckedModeBanner: false,
       initialRoute: LoginPage.id,
       routes: {
         LoginPage.id: (context) => LoginPage(),
@@ -53,6 +52,7 @@ class CanteenApp extends StatelessWidget {
         ProfilePage.id: (context) => ProfilePage(),
         BookingPage.id: (context) => BookingPage(),
         ReceiptPage.id: (context) => ReceiptPage(),
+        ErrorPage.id: (context) => const ErrorPage(),
       },
     );
   }
